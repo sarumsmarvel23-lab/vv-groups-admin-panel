@@ -1,0 +1,14 @@
+# Ignore all files in the build directory
+build/
+
+# Ignore all files in the node_modules directory
+node_modules/
+
+# Ignore specific files
+src/components/Trade/charting_library/
+src/components/Trade/datafeeds/
+
+
+
+# Ignore all markdown files
+*.md
