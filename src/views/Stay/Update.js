@@ -97,21 +97,16 @@ const UpdateStay = () => {
     }
 
     // Handle Gallery
+    if (formData.gallery && Array.isArray(formData.gallery)) {
+      formData.gallery.forEach(img => data.append("gallery", img));
+    }
     if (gallery.length) {
       Array.from(gallery).forEach(file => data.append("gallery", file));
-    } else if (formData.gallery && Array.isArray(formData.gallery)) {
-      formData.gallery.forEach(img => data.append("gallery", img));
     }
 
     // Serialize rooms as JSON string
     const validRooms = rooms.filter(r => r.name.trim());
     data.append("rooms", JSON.stringify(validRooms));
-
-    if (image) data.append("image", image);
-    if (video) data.append("videoUrl", video);
-    if (gallery.length) {
-      Array.from(gallery).forEach(file => data.append("gallery", file));
-    }
 
     const res = await updateStay(id, data);
     if (res.success) {
@@ -271,7 +266,7 @@ const UpdateStay = () => {
                 ))}
               </div>
             )}
-            {formData.gallery && formData.gallery.length > 0 && gallery.length === 0 && (
+            {formData.gallery && formData.gallery.length > 0 && (
               <div className="d-flex flex-wrap mt-2 gap-2">
                 {formData.gallery.map((imgUrl, idx) => (
                   <img key={idx} src={`${config.imgUrl}${imgUrl}`} alt={`Current ${idx}`} className="img-thumbnail" width="100" />
