@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateSiteDetail } from "src/api/sitesetting";
 //import config
 import config from "../../config/index";
-import { settingsValidation } from "src/lib/validations";
+import { settingsValidation } from "../../lib/validations";
 const intialFormValue = {
 
   siteName: "",
@@ -28,6 +28,7 @@ const intialFormValue = {
   address: "",
   emailLogo: "",
   whatsappLink: "",
+  youtubeLink: "",
   maintenance: "false",
   loader: false,
 };
@@ -48,7 +49,7 @@ const SocialMedia = props => {
     siteName,
     address,
     contactNo,
-
+    youtubeLink,
     whatsappLink,
     emailLogo,
     supportMail,
@@ -92,7 +93,7 @@ const SocialMedia = props => {
         address,
         contactNo,
         supportMail,
-
+        youtubeLink,
         whatsappLink,
         emailLogo,
       }
@@ -115,6 +116,7 @@ const SocialMedia = props => {
       formData.append("supportMail", supportMail);
       formData.append("emailLogo", emailLogo);
       formData.append("whatsappLink", whatsappLink);
+      formData.append("youtubeLink", youtubeLink);
 
       formData.append("maintenance", maintenance);
       formData.append("oldImage", oldImage);
@@ -148,7 +150,7 @@ const SocialMedia = props => {
         supportMail: record.supportMail,
         emailLogo: record.emailLogo,
         whatsappLink: record.whatsappLink,
-
+        youtubeLink: record.youtubeLink,
         maintenance: record?.maintenance
           ? record.maintenance.toString()
           : "false",
@@ -215,7 +217,7 @@ const SocialMedia = props => {
               />
               <span className="text-danger">{error.telegramLink}</span>
             </CCol> */}
-            {/* <CCol md={6}>
+            <CCol md={6}>
               <CFormLabel htmlFor="staticEmail" className="col-form-label">
                 Youtube Link
               </CFormLabel>
@@ -227,7 +229,7 @@ const SocialMedia = props => {
                 onChange={handleChange}
               />
               <span className="text-danger">{error && error.youtubeLink}</span>
-            </CCol> */}
+            </CCol>
             <CCol md={6}>
               <CFormLabel htmlFor="staticEmail" className="col-form-label">
                 Whatsapp Link

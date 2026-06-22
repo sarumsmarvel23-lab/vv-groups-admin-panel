@@ -65,7 +65,10 @@ const ContactList = () => {
       const res = await deleteContact(id);
       if (res.success) {
         toast({ type: "success", message: "Contact deleted successfully!" }, dispatch);
-        fetchContacts();
+        fetchContacts({ pageIndex: 1,
+            pageSize: 10,
+            filters: [],
+            sortBy: [],});
       } else {
         toast({ type: "error", message: res.message || "Error deleting contact" }, dispatch);
       }

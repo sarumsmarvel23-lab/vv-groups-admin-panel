@@ -65,7 +65,10 @@ const StayList = () => {
       const res = await deleteStay(id);
       if (res.success) {
         toast({ type: "success", message: "Stay deleted successfully!" }, dispatch);
-        fetchStays();
+        fetchStays({ pageIndex: 1,
+            pageSize: 10,
+            filters: [],
+            sortBy: [],});
       } else {
         toast({ type: "error", message: res.message || "Error deleting stay" }, dispatch);
       }

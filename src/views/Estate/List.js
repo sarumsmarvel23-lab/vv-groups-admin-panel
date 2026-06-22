@@ -65,7 +65,10 @@ const EstateList = () => {
       const res = await deleteEstate(id);
       if (res.success) {
         toast({ type: "success", message: "Estate deleted successfully!" }, dispatch);
-        fetchEstates();
+        fetchEstates({  pageIndex: 1,
+            pageSize: 10,
+            filters: [],
+            sortBy: [],});
       } else {
         toast({ type: "error", message: res.message || "Error deleting estate" }, dispatch);
       }

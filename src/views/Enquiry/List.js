@@ -65,7 +65,10 @@ const EnquiryList = () => {
       const res = await deleteEnquiry(id);
       if (res.success) {
         toast({ type: "success", message: "Enquiry deleted successfully!" }, dispatch);
-        fetchEnquiries();
+        fetchEnquiries({ pageIndex: 1,
+            pageSize: 10,
+            filters: [],
+            sortBy: [],});
       } else {
         toast({ type: "error", message: res.message || "Error deleting enquiry" }, dispatch);
       }
@@ -77,6 +80,11 @@ const EnquiryList = () => {
     { Header: "Email", accessor: "email" },
     { Header: "Phone", accessor: "phone" },
     { Header: "Context", accessor: "context" },
+    {
+      Header: "Message",
+      accessor: "message",
+      Cell: ({ value }) => (value && value.length > 50 ? `${value.substring(0, 50)}...` : value || "-"),
+    },
     {
       Header: "Status",
       accessor: "status",

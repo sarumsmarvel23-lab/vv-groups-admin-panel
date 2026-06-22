@@ -65,7 +65,10 @@ const SpiceList = () => {
       const res = await deleteSpice(id);
       if (res.success) {
         toast({ type: "success", message: "Spice deleted successfully!" }, dispatch);
-        fetchSpices();
+        fetchSpices({ pageIndex: 1,
+            pageSize: 10,
+            filters: [],
+            sortBy: [],});
       } else {
         toast({ type: "error", message: res.message || "Error deleting spice" }, dispatch);
       }

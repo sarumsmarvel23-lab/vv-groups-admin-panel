@@ -235,7 +235,7 @@ const Login = () => {
 
         <div style={S.divider} />
 
-        <div style={S.stats}>
+        {/* <div style={S.stats}>
           <div style={S.statItem}>
             <div style={S.statNum}>3</div>
             <div style={S.statLabel}>Verticals</div>
@@ -248,7 +248,7 @@ const Login = () => {
             <div style={S.statNum}>1</div>
             <div style={S.statLabel}>Dashboard</div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* ── RIGHT: LOGIN FORM ── */}

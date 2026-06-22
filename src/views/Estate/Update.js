@@ -14,7 +14,7 @@ const UpdateEstate = () => {
   const [formData, setFormData] = useState({
     title: "", description: "", type: "Apartment", price: "", location: "",
     area: "", bedrooms: 0, bathrooms: 0, furnished: "Unfurnished", status: "Active",
-    amenities: ""
+    amenities: "", youtubeLink: ""
   });
   const [image, setImage] = useState(null);
   const [video, setVideo] = useState(null);
@@ -145,8 +145,12 @@ const UpdateEstate = () => {
             <small >Separate each amenity with a comma.</small>
           </div>
           <div className="mb-3">
-            <CFormInput type="file" id="videoUrl" label="Update Video (Optional)" accept="video/*" onChange={e => setVideo(e.target.files[0])} />
+            <CFormInput id="videoUrl" type="file" label="Update Video (Optional)" accept="video/*" onChange={e => setVideo(e.target.files[0])} />
             {formData.videoUrl && <small className="text-muted d-block mt-1">Current video: {formData.videoUrl}</small>}
+          </div>
+          <div className="mb-3">
+            <CFormInput id="youtubeLink" label="Update Youtube Link (Optional)" value={formData.youtubeLink || ''} onChange={handleChange} />
+            {errors.youtubeLink && <span className="text-danger">{errors.youtubeLink}</span>}
           </div>
           <div className="mb-3">
             <CFormInput type="file" label="Update Main Image" accept="image/*" onChange={e => setImage(e.target.files[0])} />

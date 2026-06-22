@@ -254,12 +254,13 @@ export const seriesValidation = data => {
   }
 };
 
-export const settingsValidation = data => {
+export function settingsValidation(data) {
   const errors = {};
 
   try {
     const {
       whatsappLink,
+      youtubeLink,
       siteName,
       contactNo,
       emailLogo,
@@ -293,15 +294,15 @@ export const settingsValidation = data => {
     }
 
     const socialLinks = {
-
+      youtubeLink,
       whatsappLink,
     };
 
     for (const [key, value] of Object.entries(socialLinks)) {
-      if (!urlRegex.test(value)) {
+      if (value && !urlRegex.test(value)) {
         const readableKey =
           {
-
+            youtubeLink: "Youtube",
             whatsappLink: "Whatsapp",
           }[key] || key;
 
@@ -672,6 +673,7 @@ export const estateValidation = (data) => {
   if (!data.location || data.location.trim() === "") errors.location = "Location is required";
   if (data.bedrooms < 0) errors.bedrooms = "Cannot be negative";
   if (data.bathrooms < 0) errors.bathrooms = "Cannot be negative";
+  if (data.youtubeLink && !urlRegex.test(data.youtubeLink)) errors.youtubeLink = "Invalid Youtube URL";
   return Object.keys(errors).length > 0 ? errors : null;
 };
 
@@ -683,6 +685,7 @@ export const estateInputValidation = (name, value) => {
   if (name === "location" && (!value || value.trim() === "")) errors.location = "Location is required";
   if (name === "bedrooms" && value < 0) errors.bedrooms = "Cannot be negative";
   if (name === "bathrooms" && value < 0) errors.bathrooms = "Cannot be negative";
+  if (name === "youtubeLink" && value && !urlRegex.test(value)) errors.youtubeLink = "Invalid Youtube URL";
   return errors;
 };
 
@@ -711,6 +714,7 @@ export const stayValidation = (data) => {
   if (!data.name || data.name.trim() === "") errors.name = "Name is required";
   if (!data.description || data.description.trim() === "") errors.description = "Description is required";
   if (!data.location || data.location.trim() === "") errors.location = "Location is required";
+  if (data.youtubeLink && !urlRegex.test(data.youtubeLink)) errors.youtubeLink = "Invalid Youtube URL";
   return Object.keys(errors).length > 0 ? errors : null;
 };
 
@@ -720,5 +724,6 @@ export const stayInputValidation = (name, value) => {
   if (name === "description" && (!value || value.trim() === "")) errors.description = "Description is required";
   if (name === "location" && (!value || value.trim() === "")) errors.location = "Location is required";
   if (name === "price" && (!value || value.trim() === "")) errors.price = "Price is required";
+  if (name === "youtubeLink" && value && !urlRegex.test(value)) errors.youtubeLink = "Invalid Youtube URL";
   return errors;
 };

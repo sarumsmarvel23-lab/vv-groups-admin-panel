@@ -64,12 +64,12 @@ const AppHeaderDropdown = () => {
         <CDropdownHeader className="bg-light fw-semibold py-2">
           Settings
         </CDropdownHeader>
-        <Link to={"/profile"}>
+        {/* <Link to={"/profile"}>
           <CDropdownItem>
             <CIcon icon={cilUser} className="me-2" />
             Profile Settings
           </CDropdownItem>
-        </Link>
+        </Link> */}
 
 
         <Link to={"/changePassword"}>

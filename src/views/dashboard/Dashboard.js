@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CRow, CCol, CCard, CCardHeader, CCardBody } from "@coreui/react";
 import { getVVDashboardStats } from "../../api/dashboard";
 import CountUp from "react-countup";
+import { FaHome, FaLeaf, FaBed, FaComments } from "react-icons/fa";
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -30,42 +31,70 @@ const Dashboard = () => {
         <h2 className="mb-4 fw-semibold" style={{ color: '#C9A84C' }}>Overview</h2>
         <CRow>
           <CCol sm={6} lg={3}>
-            <CCard className="mb-4 dashbox text-center shadow-sm" style={{ borderRadius: '15px' }}>
-              <CCardBody>
-                <div className="fs-1 fw-bold" style={{ color: '#C9A84C' }}>
-                  {loading ? '...' : <CountUp end={stats.estatesCount} />}
+            <CCard className="mb-4 dashbox shadow-sm" style={{ borderRadius: '15px' }}>
+              <CCardBody className="p-4">
+                <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="icon-container" style={{ backgroundColor: 'rgba(201, 168, 76, 0.1)', padding: '12px', borderRadius: '12px' }}>
+                    <FaHome size={28} style={{ color: '#C9A84C' }} />
+                  </div>
+                  <div className="text-end">
+                    <div className="fs-1 fw-bold" style={{ color: '#C9A84C' }}>
+                      {loading ? '...' : <CountUp end={stats.estatesCount} />}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-uppercase fw-semibold mt-2" style={{ color: '#EDE8DF' }}>Total Estates</div>
+                <div className="text-uppercase fw-semibold" style={{ color: '#EDE8DF', fontSize: '11px', letterSpacing: '0.1em' }}>Total Estates</div>
               </CCardBody>
             </CCard>
           </CCol>
           <CCol sm={6} lg={3}>
-            <CCard className="mb-4 dashbox text-center shadow-sm" style={{ borderRadius: '15px' }}>
-              <CCardBody>
-                <div className="fs-1 fw-bold" style={{ color: '#C9A84C' }}>
-                  {loading ? '...' : <CountUp end={stats.spicesCount} />}
+            <CCard className="mb-4 dashbox shadow-sm" style={{ borderRadius: '15px' }}>
+              <CCardBody className="p-4">
+                <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="icon-container" style={{ backgroundColor: 'rgba(201, 168, 76, 0.1)', padding: '12px', borderRadius: '12px' }}>
+                    <FaLeaf size={28} style={{ color: '#C9A84C' }} />
+                  </div>
+                  <div className="text-end">
+                    <div className="fs-1 fw-bold" style={{ color: '#C9A84C' }}>
+                      {loading ? '...' : <CountUp end={stats.spicesCount} />}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-uppercase fw-semibold mt-2" style={{ color: '#EDE8DF' }}>Total Spices</div>
+                <div className="text-uppercase fw-semibold" style={{ color: '#EDE8DF', fontSize: '11px', letterSpacing: '0.1em' }}>Total Spices</div>
               </CCardBody>
             </CCard>
           </CCol>
           <CCol sm={6} lg={3}>
-            <CCard className="mb-4 dashbox text-center shadow-sm" style={{ borderRadius: '15px' }}>
-              <CCardBody>
-                <div className="fs-1 fw-bold" style={{ color: '#C9A84C' }}>
-                  {loading ? '...' : <CountUp end={stats.staysCount} />}
+            <CCard className="mb-4 dashbox shadow-sm" style={{ borderRadius: '15px' }}>
+              <CCardBody className="p-4">
+                <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="icon-container" style={{ backgroundColor: 'rgba(201, 168, 76, 0.1)', padding: '12px', borderRadius: '12px' }}>
+                    <FaBed size={28} style={{ color: '#C9A84C' }} />
+                  </div>
+                  <div className="text-end">
+                    <div className="fs-1 fw-bold" style={{ color: '#C9A84C' }}>
+                      {loading ? '...' : <CountUp end={stats.staysCount} />}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-uppercase fw-semibold mt-2" style={{ color: '#EDE8DF' }}>Total Stays</div>
+                <div className="text-uppercase fw-semibold" style={{ color: '#EDE8DF', fontSize: '11px', letterSpacing: '0.1em' }}>Total Stays</div>
               </CCardBody>
             </CCard>
           </CCol>
           <CCol sm={6} lg={3}>
-            <CCard className="mb-4 dashbox text-center shadow-sm" style={{ borderRadius: '15px' }}>
-              <CCardBody>
-                <div className="fs-1 fw-bold" style={{ color: '#C9A84C' }}>
-                  {loading ? '...' : <CountUp end={stats.enquiriesCount} />}
+            <CCard className="mb-4 dashbox shadow-sm" style={{ borderRadius: '15px' }}>
+              <CCardBody className="p-4">
+                <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="icon-container" style={{ backgroundColor: 'rgba(201, 168, 76, 0.1)', padding: '12px', borderRadius: '12px' }}>
+                    <FaComments size={28} style={{ color: '#C9A84C' }} />
+                  </div>
+                  <div className="text-end">
+                    <div className="fs-1 fw-bold" style={{ color: '#C9A84C' }}>
+                      {loading ? '...' : <CountUp end={stats.enquiriesCount} />}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-uppercase fw-semibold mt-2" style={{ color: '#EDE8DF' }}>Total Enquiries</div>
+                <div className="text-uppercase fw-semibold" style={{ color: '#EDE8DF', fontSize: '11px', letterSpacing: '0.1em' }}>Total Enquiries</div>
               </CCardBody>
             </CCard>
           </CCol>
